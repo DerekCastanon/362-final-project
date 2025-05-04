@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>InstantParty | Host your space!</title>
+    <link rel="stylesheet" href="css_files/host_space_styles.css" />
+  </head>
+
+  <body>
+    <!-- -----------------------Logo----------------------- -->
+    <div id="logo">
+      <a href="home.html">
+        <img
+          src="images/logo.png"
+          alt="InstantParty Logo"
+          class="logo-img"
+          width="200"
+        />
+      </a>
+    </div>
+    <!-- ------------------Profile Dropdown---------------- -->
+    <div id="profile_dropdown">
+      <div class="profile" onclick="menuToggle()">
+        <img src="images/profile.png" alt="Profile Picture" />
+      </div>
+      <div class="menu">
+        <h3>Username<br /><span>Location</span></h3>
+        <ul>
+          <li>
+            <img src="images/user.png" width="50" /><a
+              href="profile_settings.html"
+              >My Profile</a
+            >
+          </li>
+          <li>
+            <img src="images/settings.png" width="50" /><a href="settings.html"
+              >Settings</a
+            >
+          </li>
+          <li>
+            <img src="images/inbox.png" width="50" /><a href="inbox.html"
+              >Inbox</a
+            >
+          </li>
+          <li>
+            <img src="images/manage.png" width="50" /><a
+              href="manage_listings.html"
+              >Manage your spaces</a
+            >
+          </li>
+          <li>
+            <img src="images/balloons.png" width="50" /><a
+              href="host_space.html"
+              >Host your space</a
+            >
+          </li>
+          <li>
+            <img src="images/logout.png" width="50" /><a href="login.html"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      function menuToggle() {
+        const toggleMenu = document.querySelector(".menu");
+        toggleMenu.classList.toggle("active");
+      }
+    </script>
+
+    <!--rental boxes-->
+    <main>
+      <div class="host-container">
+        <h1>Host Your Rental</h1>
+
+        <form id="rentalForm" action="http://localhost:3000/api/listings" method="POST" enctype="multipart/form-data">
+          <!-- Rental Info -->
+          <section class="form-section">
+            <h2>Rental Info</h2>
+            <label for="name">Rental Name:</label>
+            <input type="text" id="name" name="name" required />
+
+            <label for="shortDescription">A brief summary of the property (1 sentence):</label>
+            <textarea
+              id="shortDescription"
+              name="shortDescription"
+              rows="4"
+              required
+            ></textarea>
+
+            <label for="longDescription">A detailed description of the property:</label>
+            <textarea
+              id="longDescription"
+              name="longDescription"
+              rows="4"
+              required
+            ></textarea>
+          </section>
+
+          <!-- Location Details -->
+          <section class="form-section">
+            <h2>Location Details</h2>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required />
+
+            <div class="location-grid">
+              <div>
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required />
+              </div>
+
+              <div>
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required />
+              </div>
+
+              <div>
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country" required />
+              </div>
+
+              <div>
+                <label for="zip">Zip Code:</label>
+                <input type="text" id="zip" name="zip" required />
+              </div>
+            </div>
+          </section>
+
+          <!-- Availability -->
+          <section class="form-section">
+            <h2>Available Dates</h2>
+            <label for="checkin">Starting from:</label>
+            <input type="text" id="checkin" name="checkin" placeholder="Add dates" onfocus="(this.type='date')" style="width: 200px;" required />
+            <label for="checkout">Ending at:</label>
+            <input type="text" id="checkout" name="checkout" placeholder="Add dates" onfocus="(this.type='date')" style="width: 200px;" required />
+          </section>
+
+          <!-- Image Upload -->
+          <section class="form-section">
+            <h2>Upload Images</h2>
+            <input type="file" name="images" multiple />
+          </section>
+
+          <!-- Pricing -->
+          <section class="form-section">
+            <h2>Price Settings</h2>
+            <label for="price">Price per Night ($):</label>
+            <input type="number" id="price" name="price" required />
+          </section>
+
+          <!-- Post Button -->
+          <button type="submit" class="post-button">Post Your Listing</button>
+        </form>
+
+        <div id="confirmation" style="display: none; text-align: center">
+          <h2>Rental Created!</h2>
+          <p>Thank you for listing your rental.</p>
+          <a href="property_details.html">
+            <button type="button" class="view-listing-btn">View Listing</button> <!--Button links to created listing-->
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!--Footer-->
+    <footer id="site_footer">
+      <p>&copy; 2025 InstantParty. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+
+    <script>
+      const form = document.querySelector('form');
+      const confirmation = document.getElementById('confirmation');
+    
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+    
+        const formData = new FormData(form);
+
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+          alert("You must be logged in to post a listing.");
+          return;
+        }
+      
+        formData.append('userId', userId);
+    
+        try {
+          const response = await fetch('/api/listings', {
+            method: 'POST',
+            body: formData
+          });
+    
+          if (response.ok) {
+            window.location.href = 'home.html';
+          } else {
+            alert('Error creating listing');
+          }
+        } catch (error) {
+          console.error('Failed to submit:', error);
+          alert('Network error occurred.');
+        }
+      });
+    </script>
+  </body>
+</html>

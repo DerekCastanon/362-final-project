@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>InstantParty | Las Vegas, Nevada Listing</title>
+    <link rel="stylesheet" href="css_files/property_details_style.css" />
+  </head>
+  <body>
+    <div id="logo">
+      <a href="home.html">
+        <img
+          src="images/logo.png"
+          alt="InstantParty Logo"
+          class="logo-img"
+          width="200"
+        />
+      </a>
+    </div>
+
+    <!-- ------------------Profile Dropdown---------------- -->
+    <div id="profile_dropdown">
+      <div class="profile" onclick="menuToggle()">
+        <img src="images/profile.png" alt="Profile Picture" />
+      </div>
+      <div class="menu">
+        <h3>Username<br /><span>Location</span></h3>
+        <ul>
+          <li>
+            <img src="images/user.png" /><a href="profile_settings.html">My Profile</a>
+          </li>
+          <li>
+            <img src="images/settings.png" /><a href="settings.html">Settings</a>
+          </li>
+          <li>
+            <img src="images/inbox.png" /><a href="inbox.html">Inbox</a>
+          </li>
+          <li>
+            <img src="images/manage.png" /><a href="manage_listings.html">Manage your spaces</a>
+          </li>
+          <li>
+            <img src="images/balloons.png" /><a href="host_space.html">Host your space</a>
+          </li>
+          <li>
+            <img src="images/logout.png" /><a href="login.html">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      function menuToggle() {
+        const toggleMenu = document.querySelector(".menu");
+        toggleMenu.classList.toggle("active");
+      }
+    </script>
+
+    <div class="container">
+      <div class="white-card-container">
+        <div class="gallery-grid">
+          <div class="gallery-large">
+            <img src="images/main_photo.png" alt="Main Image" />
+          </div>
+          <div class="gallery-small">
+            <img src="images/kitchen.png" alt="Image 1" />
+            <img src="images/backyard.png" alt="Image 2" />
+            <img src="images/bedroom.png" alt="Image 3" />
+            <img src="images/front_view.png" alt="Image 4" />
+            <div class="small-last"></div>
+          </div>
+        </div>
+
+        <!-- Listing Info -->
+        <div class="listing-header">
+          <h1>Cozy Beachfront Cottage <span class="rating">⭐ 5.0</span></h1>
+          <p class="location">Oceanside, California, United States</p>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="content">
+        <div class="left-side">
+          <!-- Description -->
+          <div class="description">
+            <h2>About this place</h2>
+            <p>
+              Relax in this cozy beachfront getaway, perfect for couples or solo adventurers. Enjoy stunning sunsets, peaceful mornings, and direct beach access. Fully equipped kitchen, Wi-Fi, and more!
+            </p>
+          </div>
+
+          <!-- Reviews -->
+          <div class="reviews">
+            <h2>Customer Reviews</h2>
+            <div class="review">
+              <p><strong>Emily</strong> ⭐⭐⭐⭐⭐</p>
+              <p>"Absolutely beautiful spot. Super clean and so close to the ocean. Would love to stay again!"</p>
+            </div>
+            <div class="review">
+              <p><strong>Jason</strong> ⭐⭐⭐⭐⭐</p>
+              <p>"Host was amazing, and the place had everything we needed. Highly recommend."</p>
+            </div>
+            <div class="add-review-area">
+              <button id="write-review-btn">Write a Review</button>
+              <form id="review-form" style="display: none">
+                <input type="text" id="reviewer-name" placeholder="Your name" required />
+                <select id="reviewer-rating" required>
+                  <option value="">Rating</option>
+                  <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+                  <option value="4">⭐⭐⭐⭐ (4)</option>
+                  <option value="3">⭐⭐⭐ (3)</option>
+                  <option value="2">⭐⭐ (2)</option>
+                  <option value="1">⭐ (1)</option>
+                </select>
+                <textarea id="review-text" placeholder="Write your review..." required></textarea>
+                <button type="submit" id="submit-review-btn">Submit Review</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-side">
+          <div class="booking-card">
+            <div class="price-section">
+              <span class="price">$250</span>
+              <span class="per-night">per night</span>
+            </div>
+            <input type="hidden" id="listingId" value="" />
+            <div class="input-group">
+              <label>Check-in</label>
+              <input
+                type="text"
+                id="checkin"
+                name="checkin"
+                placeholder="Add dates"
+                onfocus="(this.type='date')"/>
+            </div>
+            <div class="input-group">
+              <label>Check-out</label>
+              <input
+                type="text"
+                id="checkout"
+                name="checkout"
+                placeholder="Add dates"
+                onfocus="(this.type='date')"/>
+            </div>
+            <div class="input-group">
+              <label>Guests</label>
+              <input type="number" id="guests" min="1" value="1" required />
+            </div>
+            <button id="reserve-btn">Reserve</button>
+            <p class="charge-note">You won't be charged yet</p>
+          </div>
+          <div id="summary"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="site_footer">
+      <p>&copy; 2025 InstantParty. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+    
+    <!-- Booking Script -->
+    <script>
+      function getListingIdFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('id');
+      }
+
+      document.addEventListener('DOMContentLoaded', async () => {
+        const listingId = getListingIdFromURL();
+        if (!listingId) {
+          alert("No listing ID provided.");
+          return;
+        }
+      
+        try {
+          const response = await fetch(`/api/listings/${listingId}`);
+          const data = await response.json();
+
+          if (!response.ok) throw new Error(data.message || "Error fetching listing");
+
+          // Set the listing details
+          document.querySelector('.listing-header h1').innerHTML = `${data.name} <span class="rating">⭐ 5.0</span>`;
+          document.querySelector('.location').textContent = `${data.city}, ${data.state}, ${data.country}`;
+          document.querySelector('.description p').textContent = data.longDescription;
+          document.querySelector('.price').textContent = `$${data.price}`;
+          document.getElementById('listingId').value = data._id;
+        
+          // Set the images
+          const galleryLarge = document.querySelector('.gallery-large img');
+          const gallerySmall = document.querySelectorAll('.gallery-small img');
+        
+          if (data.imageUrls && data.imageUrls.length > 0) {
+            galleryLarge.src = data.imageUrls[0];
+            for (let i = 0; i < gallerySmall.length && i < data.imageUrls.length - 1; i++) {
+              gallerySmall[i].src = data.imageUrls[i + 1];
+            }
+          }
+        
+        } catch (err) {
+          console.error("Failed to fetch listing:", err);
+          alert("Failed to load listing details.");
+        }
+      });
+
+
+      document.getElementById('reserve-btn').addEventListener('click', async function() {
+        const listingId = document.getElementById('listingId').value;
+        const checkinDate = document.getElementById('checkin').value;
+        const checkoutDate = document.getElementById('checkout').value;
+        const guests = document.getElementById('guests').value;
+
+        if (!checkinDate || !checkoutDate || !guests) {
+          alert('Please fill in all booking details.');
+          return;
+        }
+
+        const userId = localStorage.getItem('userId');
+
+        if (!userId) {
+          alert('You must be logged in to make a booking.');
+          return;
+        }
+
+        const bookingData = {
+          userId,
+          listingId,
+          checkinDate,
+          checkoutDate,
+          guests,
+        };
+
+        try {
+          const response = await fetch('/api/bookings', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bookingData)
+          });
+
+          const result = await response.json();
+          if (response.ok) {
+            alert('Booking successful!');
+            window.location.href = 'payment.html';
+          } else {
+            alert('Booking failed: ' + result.message);
+          }
+        } catch (error) {
+          console.error('Error booking listing:', error);
+          alert('An error occurred while booking.');
+        }
+      });
+    </script>
+  </body>
+</html>

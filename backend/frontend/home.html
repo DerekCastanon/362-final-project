@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      InstantParty | Party venues, rooftops, backyards, lounges & more
+    </title>
+    <link rel="stylesheet" href="css_files/home_style.css" />
+  </head>
+  <body>
+    <div id="page-wrapper">
+      <!-- -----------------------Logo----------------------- -->
+      <div id="logo">
+        <a href="home.html">
+          <img
+            src="images/logo.png"
+            alt="InstantParty Logo"
+            class="logo-img"
+            width="200"
+          />
+        </a>
+      </div>
+      <!-- ------------------Profile Dropdown---------------- -->
+      <div id="profile_dropdown">
+        <div class="profile" onclick="menuToggle()">
+          <img src="images/profile.png" alt="Profile Picture" />
+        </div>
+        <div class="menu">
+          <h3>Username<br /><span>Location</span></h3>
+          <ul>
+            <li>
+              <img src="images/user.png" width="50" /><a
+                href="profile_settings.html"
+                >My Profile</a
+              >
+            </li>
+            <li>
+              <img src="images/settings.png" width="50" /><a href="settings.html"
+                >Settings</a
+              >
+            </li>
+            <li>
+              <img src="images/inbox.png" width="50" /><a href="inbox.html"
+                >Inbox</a
+              >
+            </li>
+            <li>
+              <img src="images/manage.png" width="50" /><a
+                href="manage_listings.html"
+                >Manage your spaces</a
+              >
+            </li>
+            <li>
+              <img src="images/balloons.png" width="50" /><a
+                href="host_space.html"
+                >Host your space</a
+              >
+            </li>
+            <li>
+              <img src="images/logout.png" width="50" /><a href="login.html"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <script>
+        function menuToggle() {
+          const toggleMenu = document.querySelector(".menu");
+          toggleMenu.classList.toggle("active");
+        }
+      </script>
+      <!-- --------------------Search Bar-------------------- -->
+      <div id="search_bar">
+        <div class="container">
+          <form method="GET" action="home.html">
+            <div class="margin-left-100">
+              <div class="form-group">
+                <label for="destination">Where</label>
+                <input
+                  type="text"
+                  id="destination"
+                  name="destination"
+                  placeholder="Search destinations"
+                  style="width: 175px"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sort_by_price">Sort by Price</label>
+              <select id="sort_by_price" name="sort_by_price" style="width: 175px">
+                <option value="asc">Price: Low to High</option>
+                <option value="desc">Price: High to Low</option>
+              </select>
+            </div>
+
+            <button type="submit" class="search-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                style="fill: beige; transform: scale(1.25)"
+              >
+                <path
+                  d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"
+                ></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <!-- ---------------------Listings--------------------- -->
+      <div id="listings-container"><div id="listings"></div></div>
+      <!-- button -->
+      <button class="scroll-to-top" onclick="scrollToTop()">
+        Not finding what you're looking for? Try the search bar at the top!
+      </button>
+      <script>
+        function scrollToTop() {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      </script>
+    </div>  
+    <!-- ---------------------------Footer--------------------------- -->
+    <footer id="site_footer">
+      <p>&copy; 2025 InstantParty. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+    <script>
+      window.onload = async function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sortByPrice = urlParams.get('sort_by_price') || 'asc';
+        const destination = urlParams.get('destination') || '';
+        
+        let apiUrl = `/api/listings?sort_by_price=${sortByPrice}`;
+        if (destination) {
+          apiUrl += `&destination=${encodeURIComponent(destination)}`;
+        }
+
+        try {
+          const response = await fetch(apiUrl);
+          const listings = await response.json();
+          
+          const listingsContainer = document.getElementById('listings');
+          listingsContainer.innerHTML = '';
+    
+          listings.forEach(listing => {
+            const listingDiv = document.createElement('a');
+            listingDiv.classList.add('rental_listing');
+            listingDiv.href = `/property_details.html?id=${listing._id}`;
+            
+            const imageUrl = listing.imageUrls.length > 0 ? listing.imageUrls[0] : 'images/rental.png';
+    
+            listingDiv.innerHTML = `
+              <div class="rental_card">
+                <img src="${imageUrl}" class="rental_image" alt="${listing.name}" />
+                <div class="rental_details">
+                  <div class="rating">★ 4.5</div>
+                  <h3>${listing.name}</h3>
+                  <p>${listing.shortDescription}</p>
+                  <p1><span class="price">$${listing.price}</span> for 1 night</p1>
+                </div>
+              </div>
+            `;
+            
+            listingsContainer.appendChild(listingDiv);
+          });
+        } catch (error) {
+          console.error('Error fetching listings:', error);
+        }
+      };
+    </script>       
+  </body>
+</html>

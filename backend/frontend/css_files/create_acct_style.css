@@ -1,0 +1,84 @@
+#logo{
+    padding: 25px 0 0 50px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e63946 0%, #457b9d 100%);
+    font-family: "Manrope", sans-serif;
+    margin: 0;
+}
+
+.form-container {
+    background: white;
+    padding: 40px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 100px auto;
+    flex: 0 0 auto;
+    margin-top: -10px;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.post-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #2a9d8f;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post-button:hover {
+    background-color: #237d72;
+}
+
+#site_footer {
+    background-color: #b8233e;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    flex-shrink: 0;
+    margin-top: 119px;
+}
+
+#site_footer .footer-links {
+    margin-top: 10px;
+}
+
+#site_footer .footer-links a {
+    margin: 0 10px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+#site_footer .footer-links a:hover {
+    opacity: 0.7;
+}

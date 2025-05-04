@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>InstantParty | Inbox</title>
+    <link rel="stylesheet" href="css_files/inbox_style.css" />
+  </head>
+  <body>
+    <div id="logo">
+      <a href="home.html">
+        <img
+          src="images/logo.png"
+          alt="InstantParty Logo"
+          class="logo-img"
+          width="200"
+        />
+      </a>
+    </div>
+    <div id="profile_dropdown">
+      <div class="profile" onclick="menuToggle()">
+        <img src="images/profile.png" alt="Profile Picture" />
+      </div>
+      <div class="menu">
+        <h3>Username<br /><span>Location</span></h3>
+        <ul>
+          <li>
+            <img src="images/user.png" width="50" /><a
+              href="profile_settings.html"
+              >My Profile</a
+            >
+          </li>
+          <li>
+            <img src="images/settings.png" width="50" /><a href="settings.html"
+              >Settings</a
+            >
+          </li>
+          <li>
+            <img src="images/inbox.png" width="50" /><a href="inbox.html"
+              >Inbox</a
+            >
+          </li>
+          <li>
+            <img src="images/manage.png" width="50" /><a
+              href="manage_listings.html"
+              >Manage your spaces</a
+            >
+          </li>
+          <li>
+            <img src="images/balloons.png" width="50" /><a
+              href="host_space.html"
+              >Host your space</a
+            >
+          </li>
+          <li>
+            <img src="images/logout.png" width="50" /><a href="login.html"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      function menuToggle() {
+        const toggleMenu = document.querySelector(".menu");
+        toggleMenu.classList.toggle("active");
+      }
+    </script>
+
+  <main>
+    <div id="inbox_container">
+      <div id="message_list">
+        <h2>Inbox</h2>
+        <ul id="messages">
+          <li onclick="openConversation('Alice')">
+            <strong>Alice</strong><br /><span>Hey, are you free to party?</span>
+          </li>
+          <li onclick="openConversation('Bob')">
+            <strong>Bob</strong><br /><span>When's the next event?</span>
+          </li>
+          <li onclick="openConversation('Charlie')">
+            <strong>Charlie</strong><br /><span>Thanks for hosting!</span>
+          </li>
+        </ul>
+      </div>
+      <div id="conversation">
+        <h2 id="conversation_with">Select a message</h2>
+        <div id="conversation_messages"></div>
+        <div id="message_input_area">
+          <input
+            type="text"
+            id="message_input"
+            placeholder="Type a message..."
+          />
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const conversations = {
+        Alice: [
+          { from: "Alice", text: "Hey, are you free to party?" },
+          { from: "You", text: "Yes! When and where?" },
+        ],
+        Bob: [
+          { from: "Bob", text: "When's the next event?" },
+          { from: "You", text: "Planning for Friday night!" },
+        ],
+        Charlie: [
+          { from: "Charlie", text: "Thanks for hosting!" },
+          { from: "You", text: "Glad you had fun!" },
+        ],
+      };
+
+      let currentConversation = "";
+
+      function openConversation(name) {
+        currentConversation = name;
+        document.getElementById(
+          "conversation_with"
+        ).innerText = `Chat with ${name}`;
+        const convoDiv = document.getElementById("conversation_messages");
+        convoDiv.innerHTML = "";
+        conversations[name].forEach((message) => {
+          const p = document.createElement("p");
+          p.className = message.from === "You" ? "sent" : "received";
+          p.innerText = `${message.text}`;
+          convoDiv.appendChild(p);
+        });
+      }
+
+      function sendMessage() {
+        const input = document.getElementById("message_input");
+        const text = input.value.trim();
+        if (text && currentConversation) {
+          conversations[currentConversation].push({ from: "You", text });
+          openConversation(currentConversation);
+          input.value = "";
+        }
+      }
+    </script>
+  </main>
+
+
+    <footer id="site_footer">
+      <p>&copy; 2025 InstantParty. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+  </body>
+</html>

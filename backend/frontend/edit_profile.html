@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edit Your Profile - InstantParty</title>
+    <link rel="stylesheet" href="css_files/edit_profile_style.css" />
+  </head>
+  <body>
+    <div id="logo">
+      <a href="home.html">
+        <img
+          src="images/logo.png"
+          alt="InstantParty Logo"
+          class="logo-img"
+          width="200"
+        />
+      </a>
+    </div>
+
+    <div id="profile_dropdown">
+      <div class="profile" onclick="menuToggle()">
+        <img src="images/profile.png" alt="Profile Picture" />
+      </div>
+      <div class="menu">
+        <h3>Username<br /><span>Location</span></h3>
+        <ul>
+          <li>
+            <img src="images/user.png" width="50" /><a
+              href="profile_settings.html"
+              >My Profile</a
+            >
+          </li>
+          <li>
+            <img src="images/settings.png" width="50" /><a href="settings.html"
+              >Settings</a
+            >
+          </li>
+          <li>
+            <img src="images/inbox.png" width="50" /><a href="inbox.html"
+              >Inbox</a
+            >
+          </li>
+          <li>
+            <img src="images/manage.png" width="50" /><a
+              href="manage_listings.html"
+              >Manage your spaces</a
+            >
+          </li>
+          <li>
+            <img src="images/balloons.png" width="50" /><a
+              href="host_space.html"
+              >Host your space</a
+            >
+          </li>
+          <li>
+            <img src="images/logout.png" width="50" /><a href="login.html"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      function menuToggle() {
+        const toggleMenu = document.querySelector(".menu");
+        toggleMenu.classList.toggle("active");
+      }
+    </script>
+    <div class="container">
+      <!-- Profile Picture Section -->
+      <div class="profile-picture">
+        <div class="profile-circle">
+          <span>N</span>
+          <div class="add-photo">
+            <span>📷 Add</span>
+          </div>
+          <input
+            type="file"
+            id="profile-image-input"
+            accept="image/*"
+            style="display: none"
+          />
+        </div>
+      </div>
+
+      <!-- Profile Information Section -->
+      <div class="profile-info">
+        <h1>Your profile</h1>
+        <p>
+          The information you share will be used across InstantParty to help
+          other guests and Hosts get to know you.
+        </p>
+
+        <div class="profile-questions">
+          <div class="column">
+            <div class="question" data-question="Where I went to school">
+              🎓 Where I went to school
+            </div>
+            <div
+              class="question"
+              data-question="Where I've always wanted to go"
+            >
+              🌍 Where I've always wanted to go
+            </div>
+            <div class="question" data-question="Decade I was born">
+              💡 Decade I was born
+            </div>
+            <div
+              class="question"
+              data-question="My favorite song in high school"
+            >
+              🎵 My favorite song in high school
+            </div>
+            <div class="question" data-question="I spend too much time">
+              ⏰ I spend too much time
+            </div>
+            <div class="question" data-question="My biography title would be">
+              📖 My biography title would be
+            </div>
+          </div>
+          <div class="column">
+            <div class="question" data-question="My work">💼 My work</div>
+            <div class="question" data-question="Pets">🐾 Pets</div>
+            <div class="question" data-question="My most useless skill">
+              ✏️ My most useless skill
+            </div>
+            <div class="question" data-question="My fun fact">
+              💡 My fun fact
+            </div>
+            <div class="question" data-question="Languages I speak">
+              🗣️ Languages I speak
+            </div>
+            <div class="question" data-question="I'm obsessed with">
+              ❤️ I'm obsessed with
+            </div>
+            <div class="question" data-question="Where I live">
+              🏡 Where I live
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About You Section -->
+      <div class="section">
+        <h2>About you</h2>
+        <div class="about-box">
+          <p id="about-text">Write something fun and punchy.</p>
+          <a href="#" id="add-intro">Add intro</a>
+        </div>
+      </div>
+
+      <!-- Where You've Been Section -->
+      <div class="section">
+        <h2>Where you've been</h2>
+        <p>
+          Choose whether other people can see all the places you’ve been on
+          InstantParty.
+        </p>
+
+        <div class="destinations">
+          <div class="destination">🌐<br />Next destination</div>
+          <div class="destination">☀️<br />Next destination</div>
+          <div class="destination">✈️<br />Next destination</div>
+          <div class="destination">🛄<br />Next destination</div>
+        </div>
+
+        <div class="toggle-switch">
+          <input type="checkbox" id="visibility-toggle" />
+          <label for="visibility-toggle" class="toggle-label"></label>
+        </div>
+      </div>
+
+      <!-- What You're Into Section -->
+      <div class="section">
+        <h2>What you're into</h2>
+        <p>
+          Find common ground with other guests and Hosts by adding interests to
+          your profile.
+        </p>
+
+        <div class="interests" id="selected-interests">
+          <div class="interest" id="plus1">+</div>
+          <div class="interest" id="plus2">+</div>
+          <div class="interest" id="plus3">+</div>
+        </div>
+        <a href="#" id="add-interests-link">Add interests</a>
+      </div>
+
+      <!-- Done Button -->
+      <div class="done-button">
+        <button onclick="window.location.href='profile_settings.html';">
+          Done
+        </button>
+      </div>
+    </div>
+
+    <footer id="site_footer">
+      <p>&copy; 2025 InstantParty. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+
+    <script src="js_files/edit_profile.js"></script>
+  </body>
+</html>

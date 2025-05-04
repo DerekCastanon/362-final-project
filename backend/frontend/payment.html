@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payment</title>
+    <link rel="stylesheet" href="css_files/payment_style.css" />
+  </head>
+  <body>
+    <!-- -----------------------Logo----------------------- -->
+    <div id="logo">
+      <a href="home.html">
+        <img
+          src="images/logo.png"
+          alt="InstantParty Logo"
+          class="logo-img"
+          width="200"
+        />
+      </a>
+    </div>
+    <!-- ------------------Profile Dropdown---------------- -->
+    <div id="profile_dropdown">
+      <div class="profile" onclick="menuToggle()">
+        <img src="images/profile.png" alt="Profile Picture" />
+      </div>
+      <div class="menu">
+        <h3>Username<br /><span>Location</span></h3>
+        <ul>
+          <li>
+            <img src="images/user.png" /><a href="profile_settings.html"
+              >My Profile</a
+            >
+          </li>
+          <li>
+            <img src="images/settings.png" /><a href="settings.html"
+              >Settings</a
+            >
+          </li>
+          <li><img src="images/inbox.png" /><a href="inbox.html">Inbox</a></li>
+          <li>
+            <img src="images/manage.png" /><a href="manage_listings.html"
+              >Manage your spaces</a
+            >
+          </li>
+          <li>
+            <img src="images/balloons.png" /><a href="host_space.html"
+              >Host your space</a
+            >
+          </li>
+          <li>
+            <img src="images/logout.png" /><a href="login.html">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      function menuToggle() {
+        const toggleMenu = document.querySelector(".menu");
+        toggleMenu.classList.toggle("active");
+      }
+    </script>
+    <!--Input Boxes-->
+    <main>
+      <main class="payment-section">
+        <div class="payment-box">
+          <h2>Payment Information</h2>
+          <form action="confirmation.html" method="get">
+            <label for="card-name">Name on Card</label>
+            <input type="text" id="card-name" name="card-name" required />
+
+            <div class="card-type-row">
+              <div>
+                <label for="card-type">Card Type</label><br />
+                <select id="card-type" name="card-type">
+                  <option value="">-- Select Card Type --</option>
+                  <option value="visa">Visa</option>
+                  <option value="mastercard">MasterCard</option>
+                  <option value="amex">American Express</option>
+                  <option value="discover">Discover</option>
+                </select>
+              </div>
+              <img
+                id="card-image"
+                src=""
+                alt="Card Logo"
+                class="card-logo-img"
+              />
+            </div>
+
+            <!-- Image container -->
+            <div class="card-logo">
+              <img
+                id="card-image"
+                src=""
+                alt="Card Logo"
+                style="display: none; height: 40px"
+              />
+            </div>
+
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" name="card-number" required />
+
+            <div class="form-row">
+              <div>
+                <label for="expiry">Expiry Date</label>
+                <input
+                  type="text"
+                  id="expiry"
+                  name="expiry"
+                  placeholder="MM/YY"
+                  required
+                />
+              </div>
+              <div>
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required />
+              </div>
+            </div>
+
+            <label for="billing-address">Billing Address</label>
+            <input
+              type="text"
+              id="billing-address"
+              name="billing-address"
+              required
+            />
+
+            <label for="zip">ZIP / Postal Code</label>
+            <input type="text" id="zip" name="zip" required />
+
+            <div class="save-card">
+              <input type="checkbox" id="save-card" name="save-card" />
+              <label for="save-card">Save card details for next time</label>
+            </div>
+
+            <button type="submit">Confirm & Proceed</button>
+          </form>
+        </div>
+      </main>
+    </main>
+
+    <!--Footer-->
+    <footer id="site_footer">
+      <p>&copy; 2025 InstantParty. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+
+    <!--JavaScript-->
+    <script src="js_files/payment.js"></script>
+  </body>
+</html>

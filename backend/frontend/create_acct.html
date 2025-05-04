@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+  <title>InstantParty | Create an account</title>
+  <link rel="stylesheet" href="css_files/create_acct_style.css" />
+</head>
+<body>
+  <div id="logo">
+    <a href="home.html">
+      <img
+        src="images/logo.png"
+        alt="InstantParty Logo"
+        class="logo-img"
+        width="200"
+      />
+    </a>
+  </div>
+  <div class="form-container">
+    <h1>Create User Account</h1>
+    <form id="createUserForm">
+      <!-- Username -->
+      <div class="form-group">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+          required
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="post-button">Create Account</button>
+    </form>
+  </div>
+  <footer id="site_footer">
+    <p>&copy; 2025 InstantParty. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('createUserForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, email, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert(data.message);
+          window.location.href = 'login.html';
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error('Error during registration:', error);
+        alert('An error occurred while creating the account. Please try again.');
+      }
+    });
+  </script>
+</body>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InstantParty | Edit your profile</title>
+    <link rel="stylesheet" href="css_files/profile_settings_style.css" />
+  </head>
+  <body>
+    <div id="logo">
+      <a href="home.html">
+        <img
+          src="images/logo.png"
+          alt="InstantParty Logo"
+          class="logo-img"
+          width="200"
+        />
+      </a>
+    </div>
+    <!-- ------------------Profile Dropdown---------------- -->
+    <div id="profile_dropdown">
+      <div class="profile" onclick="menuToggle()">
+        <img src="images/profile.png" alt="Profile Picture" />
+      </div>
+      <div class="menu">
+        <h3>Username<br /><span>Location</span></h3>
+        <ul>
+          <li>
+            <img src="images/user.png" /><a href="profile_settings.html"
+              >My Profile</a
+            >
+          </li>
+          <li>
+            <img src="images/settings.png" /><a href="settings.html"
+              >Settings</a
+            >
+          </li>
+          <li><img src="images/inbox.png" /><a href="inbox.html">Inbox</a></li>
+          <li>
+            <img src="images/manage.png" /><a href="manage_listings.html"
+              >Manage your spaces</a
+            >
+          </li>
+          <li>
+            <img src="images/balloons.png" /><a href="host_space.html"
+              >Host your space</a
+            >
+          </li>
+          <li>
+            <img src="images/logout.png" /><a href="login.html">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      function menuToggle() {
+        const toggleMenu = document.querySelector(".menu");
+        toggleMenu.classList.toggle("active");
+      }
+    </script>
+    <div class="container">
+      <div class="left-column">
+        <div class="card">
+          <div class="profile-pic">N</div>
+          <div class="profile-name">Nithin</div>
+          <div class="profile-subtitle">Guest</div>
+          <div class="profile-subtitle" style="margin-top: 10px">
+            1 Month on InstantParty
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="info-title">Nithin's confirmed information</div>
+          <div class="verified">✔️ Email address</div>
+          <hr style="margin: 20px 0" />
+          <div class="info-title">Verify your identity</div>
+          <p style="color: #717171; margin-bottom: 12px">
+            Before you book or host on InstantParty, you’ll need to complete
+            this step.
+          </p>
+          <button class="button-outline">Get verified</button>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div class="card">
+          <h2>It's time to edit your profile</h2>
+          <p>
+            Your InstantParty profile is an important part of every reservation.
+            Personalize yours to help other Hosts and guests get to know you.
+          </p>
+          <button
+            class="button"
+            onclick="window.location.href='edit_profile.html';"
+          >
+            Edit profile
+          </button>
+        </div>
+      </div>
+    </div>
+    <footer id="site_footer">
+      <p>&copy; 2025 InstantParty. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+  </body>
+</html>

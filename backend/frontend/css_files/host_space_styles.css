@@ -1,0 +1,322 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Manrope", sans-serif;
+  flex: 1;
+}
+
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #e63946 0%, #457b9d 100%);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 20px;
+  /* Fallback for very short screens */
+}
+
+/* Navigation Bar */
+#logo {
+  padding: 25px 0 0 50px;
+}
+
+#profile_dropdown {
+  position: fixed;
+  top: 50px;
+  right: 90px;
+}
+
+#profile_dropdown .profile {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.1);
+}
+
+#profile_dropdown .profile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#profile_dropdown .menu {
+  position: absolute;
+  top: 140px;
+  right: 10px;
+  padding: 10px 20px;
+  background: #fff;
+  width: 200px;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#profile_dropdown .menu.active {
+  top: 125px;
+  visibility: visible;
+  opacity: 1;
+}
+
+#profile_dropdown .menu::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+#profile_dropdown .menu h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  font-weight: 500;
+  color: #555;
+  line-height: 1.2em;
+}
+
+#profile_dropdown .menu h3 span {
+  font-size: 14px;
+  color: #cecece;
+  font-weight: 400;
+}
+
+#profile_dropdown .menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#profile_dropdown .menu ul li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 0; 
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  gap: 10px;
+}
+
+#profile_dropdown .menu ul li:first-child {
+  border-top: none; 
+}
+
+#profile_dropdown .menu ul li img {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+#profile_dropdown .menu ul li:hover img {
+  opacity: 1;
+}
+
+#profile_dropdown .menu ul li a {
+  color: #555;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#profile_dropdown .menu ul li:hover a {
+  color: #d27d54;
+}
+
+
+
+/*User input*/
+.host-container {
+  background: white;
+  padding: 40px;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: -150px;
+  margin-bottom: 40px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-section {
+  margin-bottom: 30px;
+}
+
+.form-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.unavailable-section {
+  margin-top: 15px;
+}
+
+#unavailableDatesContainer input {
+  width: 250px;
+  max-width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.fake-date::placeholder {
+  color: gray;
+  font-style: italic;
+}
+
+#unavailableDatesContainer input[type="date"] {
+  display: block;
+  margin-bottom: 10px;
+  max-width: 250px;
+}
+
+.add-date-btn {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-date-btn:hover {
+  background-color: #ddd;
+}
+
+.days-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.days-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f1f1f1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#dateCount {
+  font-size: 14px;
+  color: gray;
+  margin-left: 5px;
+}
+
+.post-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #2a9d8f;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.post-button:hover {
+  background-color: #237d72;
+}
+
+.view-listing-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #3498db;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-listing-btn:hover {
+  background-color: #2980b9;
+}
+
+
+/*Footer */
+#site_footer {
+  background-color: #b8233e;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  margin-top: auto;
+}
+
+#site_footer .footer-links {
+  margin-top: 10px;
+}
+
+#site_footer .footer-links a {
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+#site_footer .footer-links a:hover {
+  color: #bb6c49;
+}

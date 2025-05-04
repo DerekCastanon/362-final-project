@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Settings</title>
+    <link rel="stylesheet" href="css_files/settings_styles.css" />
+  </head>
+
+  <body>
+    <!-- -----------------------Logo----------------------- -->
+    <div id="logo">
+      <a href="home.html">
+        <img
+          src="images/logo.png"
+          alt="InstantParty Logo"
+          class="logo-img"
+          width="200"
+        />
+      </a>
+    </div>
+    <!-- ------------------Profile Dropdown---------------- -->
+    <div id="profile_dropdown">
+      <div class="profile" onclick="menuToggle()">
+        <img src="images/profile.png" alt="Profile Picture" />
+      </div>
+      <div class="menu">
+        <h3>Username<br /><span>Location</span></h3>
+        <ul>
+          <li>
+            <img src="images/user.png" /><a href="profile_settings.html"
+              >My Profile</a
+            >
+          </li>
+          <li>
+            <img src="images/settings.png" /><a href="settings.html"
+              >Settings</a
+            >
+          </li>
+          <li><img src="images/inbox.png" /><a href="inbox.html">Inbox</a></li>
+          <li>
+            <img src="images/manage.png" /><a href="manage_listings.html"
+              >Manage your spaces</a
+            >
+          </li>
+          <li>
+            <img src="images/balloons.png" /><a href="host_space.html"
+              >Host your space</a
+            >
+          </li>
+          <li>
+            <img src="images/logout.png" /><a href="login.html">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      function menuToggle() {
+        const toggleMenu = document.querySelector(".menu");
+        toggleMenu.classList.toggle("active");
+      }
+    </script>
+    <!--Boxes-->
+    <main>
+      <div class="account-settings-container">
+        <div class="account-header">
+          <div class="welcome-header">
+            <p>
+              <strong>Welcome <span class="username">Username</span>,</strong>
+            </p>
+            <a class="profile-link" href="profile_settings.html"
+              >Go to profile</a
+            >
+          </div>
+        </div>
+
+        <div class="settings-grid">
+          <div class="setting-card" data-section="personal-info">
+            <h2>Personal info</h2>
+            <p>Provide personal details and how we can reach you</p>
+          </div>
+          <div class="setting-card" data-section="login-security">
+            <h2>Login & security</h2>
+            <p>Update your password and secure your account</p>
+          </div>
+          <div class="setting-card" data-section="payments-payouts">
+            <h2>Payments & payouts</h2>
+            <p>Review payments, payouts, coupons, and gift cards</p>
+          </div>
+          <div class="setting-card" data-section="notifications">
+            <h2>Notifications</h2>
+            <p>Choose notification settings and how you receive messages</p>
+          </div>
+          <div class="setting-card" data-section="privacy-sharing">
+            <h2>Privacy & sharing</h2>
+            <p>Manage data shared with others and Airbnb</p>
+          </div>
+          <div class="setting-card" data-section="global-preferences">
+            <h2>Global preferences</h2>
+            <p>Set your default language, currency, and time zone</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!--Footer-->
+    <footer id="site_footer">
+      <p>&copy; 2025 InstantParty. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+
+    <!--JavaScript-->
+    <script src="js_files/settings.js"></script>
+  </body>
+</html>

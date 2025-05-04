@@ -1,0 +1,422 @@
+/* General */
+body {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    background: linear-gradient(135deg, #e63946 0%, #457b9d 100%);
+    color: #333;
+  }
+
+#logo {
+  padding: 25px 0 0 50px;
+}
+
+#profile_dropdown {
+  position: fixed;
+  top: 50px;
+  right: 90px;
+}
+
+#profile_dropdown .profile {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.1);
+}
+
+#profile_dropdown .profile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#profile_dropdown .menu {
+  position: absolute;
+  top: 140px;
+  right: 10px;
+  padding: 10px 20px;
+  background: #fff;
+  width: 200px;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#profile_dropdown .menu.active {
+  top: 125px;
+  visibility: visible;
+  opacity: 1;
+}
+
+#profile_dropdown .menu::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+#profile_dropdown .menu h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  font-weight: 500;
+  color: #555;
+  line-height: 1.2em;
+  margin-top: 0px;
+}
+
+#profile_dropdown .menu h3 span {
+  font-size: 14px;
+  color: #cecece;
+  font-weight: 400;
+}
+
+#profile_dropdown .menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-top: -20px;
+}
+
+#profile_dropdown .menu ul li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 0; 
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  gap: 10px;
+}
+
+#profile_dropdown .menu ul li:first-child {
+  border-top: none; 
+}
+
+#profile_dropdown .menu ul li img {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+#profile_dropdown .menu ul li:hover img {
+  opacity: 1;
+}
+
+#profile_dropdown .menu ul li a {
+  color: #555;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#profile_dropdown .menu ul li:hover a {
+  color: #d27d54;
+}
+  
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: -150px;
+  }
+  
+  /* Airbnb-style Gallery */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 8px;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 600px;
+  }
+  
+  .gallery-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .gallery-small {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+    height: 100%;
+  }
+  
+  .gallery-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .small-last {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .small-last img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .show-all {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  }
+  
+  /* Listing Info */
+  .listing-header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .listing-header h1 {
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .rating {
+    font-size: 20px;
+    color: #FF385C;
+  }
+  
+  .location {
+    color: #717171;
+    font-size: 16px;
+  }
+  
+  /* Main Content */
+  .content {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  /* Left Side */
+  .left-side {
+    flex: 2;
+    min-width: 300px;
+  }
+  
+  .description, .reviews {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .description h2, .reviews h2 {
+    margin-top: 0;
+  }
+  
+  /* Reviews */
+  .review {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+  
+  /* Right Side */
+  .right-side {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .booking-card {
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 30px;
+  }
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+}
+
+.white-card-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin: 30px 0px 30px 0px;
+}
+  
+  .price-section {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .input-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .input-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  #reserve-btn {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  #reserve-btn:hover {
+    background-color: #237d72;
+  }
+  
+  .charge-note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #777;
+    text-align: center;
+  }
+  
+  #summary {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  .add-review-area {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  #write-review-btn {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  #write-review-btn:hover{
+    background-color: #237d72;
+  }
+  
+  #review-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  #review-form input,
+  #review-form textarea,
+  #review-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  #submit-review-btn {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  #submit-review-btn:hover{
+    background-color: #237d72;
+  }
+  
+  #site_footer {
+    background-color: #b8233e;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    margin-top: 50px;
+}
+
+#site_footer .footer-links {
+    margin-top: 10px;
+}
+
+#site_footer .footer-links a {
+    margin: 0 10px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+#site_footer .footer-links a:hover {
+    opacity: 0.7;
+}
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+    }
+    
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .gallery-small {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+  }
+  

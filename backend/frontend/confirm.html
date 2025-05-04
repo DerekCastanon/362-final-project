@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>confirmation</title>
+    <link rel="stylesheet" href="css_files/confirm_styles.css" />
+  </head>
+
+  <body>
+    <!-- -----------------------Logo----------------------- -->
+    <div id="logo">
+      <a href="home.html">
+        <img
+          src="images/logo.png"
+          alt="InstantParty Logo"
+          class="logo-img"
+          width="200"
+        />
+      </a>
+    </div>
+    <!-- ------------------Profile Dropdown---------------- -->
+    <div id="profile_dropdown">
+      <div class="profile" onclick="menuToggle()">
+        <img src="images/profile.png" alt="Profile Picture" />
+      </div>
+      <div class="menu">
+        <h3>Username<br /><span>Location</span></h3>
+        <ul>
+          <li>
+            <img src="images/user.png" width="50" /><a
+              href="profile_settings.html"
+              >My Profile</a
+            >
+          </li>
+          <li>
+            <img src="images/settings.png" width="50" /><a href="settings.html"
+              >Settings</a
+            >
+          </li>
+          <li>
+            <img src="images/inbox.png" width="50" /><a href="inbox.html"
+              >Inbox</a
+            >
+          </li>
+          <li>
+            <img src="images/manage.png" width="50" /><a
+              href="manage_listings.html"
+              >Manage your spaces</a
+            >
+          </li>
+          <li>
+            <img src="images/balloons.png" width="50" /><a
+              href="host_space.html"
+              >Host your space</a
+            >
+          </li>
+          <li>
+            <img src="images/logout.png" width="50" /><a href="login.html"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      function menuToggle() {
+        const toggleMenu = document.querySelector(".menu");
+        toggleMenu.classList.toggle("active");
+      }
+    </script>
+
+    <!--Confirm payment-->
+    <main>
+      <div class="confirmation-wrapper">
+        <div class="confirmation-card">
+          <!-- NEW CARD WRAPPER -->
+
+          <!-- Billing info -->
+          <div id="billing-info">
+            <h1 id="listing-name">[Listing Name Placeholder]</h1>
+            <h2>Booking Summary</h2>
+            <div class="rental-section">
+              <p><strong>Rental Stay:</strong> 5 nights</p>
+              <p><strong>Rental Price:</strong> $100/night</p>
+            </div>
+            <div class="money-section">
+              <p><strong>Subtotal:</strong> $500.00</p>
+              <p><strong>Taxes:</strong> $50.00</p>
+              <p><strong>Total:</strong> $550.00</p>
+            </div>
+            <div class="payment-section">
+              <label for="payment-method"
+                ><strong>Select Payment Method:</strong></label
+              ><br />
+              <select
+                id="payment-method"
+                onchange="handlePaymentMethod()"
+                style="margin: 10px 0; padding: 8px; width: 100%"
+              >
+                <option value="" selected disabled>Select saved card...</option>
+                <option value="card1">Visa ending in 1234</option>
+                <option value="card2">MasterCard ending in 5678</option>
+                <option value="new">Add a new card</option>
+              </select>
+            </div>
+
+            <button id="pay-now-btn" onclick="confirmPayment()">
+              Confirm & Proceed
+            </button>
+          </div>
+
+          <!-- Confirmation message -->
+          <div
+            id="confirmation-message"
+            style="display: none; text-align: center; padding: 40px"
+          >
+            <h2 style="color: green">✅ Payment Confirmed</h2>
+            <p>
+              <strong>Thank you for your payment.</strong> Your rental of
+              <strong>[listing name]</strong> has been confirmed.
+            </p>
+            <p>
+              A receipt has been emailed to:
+              <strong>youremail@gmail.com</strong>
+            </p>
+
+            <div
+              style="
+                border: 1px solid #ccc;
+                padding: 20px;
+                margin: 30px auto;
+                width: 350px;
+                background: #f3f3f3;
+                text-align: left;
+              "
+            >
+              <h3 style="margin-top: 0">Booking Summary</h3>
+              <p><strong>Rental Stay:</strong> 5 nights</p>
+              <p><strong>Rental Price:</strong> $100/night</p>
+              <p><strong>Subtotal:</strong> $500.00</p>
+              <p><strong>Taxes:</strong> $50.00</p>
+              <p><strong>Total:</strong> $550.00</p>
+            </div>
+
+            <a href="home.html">
+              <button class="return-home-btn">Return to Home</button>
+            </a>
+          </div>
+        </div>
+        <!-- END CARD WRAPPER -->
+      </div>
+    </main>
+
+    <!--Footer-->
+    <footer id="site_footer">
+      <p>&copy; 2025 InstantParty. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+
+    <!--JavaScript-->
+    <script src="js_files/confirm.js"></script>
+  </body>
+</html>
